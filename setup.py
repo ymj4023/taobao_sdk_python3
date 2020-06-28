@@ -8,7 +8,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setup(
     name="taobao_sdk_python3",
-    version="1.0.1",
+    version="1.0.2",
     author="ymj4023",
     author_email="xuerobec@foxmail.com",
     description="taobao_sdk_python3",

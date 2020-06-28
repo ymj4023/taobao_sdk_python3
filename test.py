@@ -5,39 +5,31 @@ Created on 2012-7-3
 @author: lihao
 '''
 import top.api
+import json
+top.setDefaultAppInfo("xxxx", "xxxx")
 
 
-'''
-这边可以设置一个默认的appkey和secret，当然也可以不设置
-注意：默认的只需要设置一次就可以了
-
-'''
-top.setDefaultAppInfo("122257***", "*******")
-
-'''
-使用自定义的域名和端口（测试沙箱环境使用）
-a = top.api.UserGetRequest("gw.api.tbsandbox.com",80)
-
-使用自定义的域名（测试沙箱环境使用）
-a = top.api.UserGetRequest("gw.api.tbsandbox.com")
-
-使用默认的配置（调用线上环境）
-a = top.api.UserGetRequest()
-
-'''
-a = top.api.UserGetRequest()
 
 
-'''
-可以在运行期替换掉默认的appkey和secret的设置
-a.set_app_info(top.appinfo("appkey","*******"))
-'''
-
-a.fields="nick"
-
-try:
-    f= a.getResponse()
-    print(f)
-except Exception as e:
-    print(e)
+class TaobaoWordCommand(object):
     
+
+
+    def get_word_command(self,user_id="xxxx",text="粉丝优惠券",url="https://uland.taobao.com/",logo="https://uland.taobao.com/"):
+
+        req = top.api.TbkTpwdCreateRequest()
+        req.user_id= user_id
+        req.text= text
+        req.url=url
+        req.logo= logo
+        req.ext="{}"
+        try:
+            resp= req.getResponse()
+            print(resp)
+            return resp
+        except Exception as e:
+            return e
+    
+if __name__ =="__main__":
+    word_command = TaobaoWordCommand()
+    word_command.get_word_command()
